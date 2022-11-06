@@ -87,6 +87,7 @@ def label_to_detectwaste(label):
     return taco_to_detectwaste(label)
 
 def taco_categories_to_detectwaste(source, dest):
+    print(source)
     # function that updates taco annotations to detectwaste categories
     # from sixty categories to glass, metals_and_plastics, non_recyclable
     # other, paper, bio, unknown

@@ -15,23 +15,23 @@ from utils.split_coco_dataset import split_coco_dataset
 def get_args_parser():
     parser = argparse.ArgumentParser(
         'Prepare images of trash for classification task')
-    parser.add_argument('--epi_source', help='path to epinote annotations',
-                        default='/dih4/dih4_2/wimlds/data'
-                                '/annotations_epi.json',
-                        type=str)
+    # parser.add_argument('--epi_source', help='path to epinote annotations',
+    #                     default='/dih4/dih4_2/wimlds/data'
+    #                             '/annotations_epi.json',
+    #                     type=str)
     parser.add_argument('--taco_source',
                         help='path to taco annotations',
-                        default='/dih4/dih4_2/wimlds/TACO-master'
+                        default='TACO'
                                 '/data/annotations.json',
                         type=str)
     parser.add_argument('--detectwaste_dest',
                         help='path to detectwaste annotations',
                         default='annotations/annotations_detectwaste.json',
                         type=str)
-    parser.add_argument('--epi_dest',
-                        help='path to source epi annotations',
-                        default='annotations/annotations-epi.json',
-                        type=str)
+    # parser.add_argument('--epi_dest',
+    #                     help='path to source epi annotations',
+    #                     default='annotations/annotations-epi.json',
+    #                     type=str)
     parser.add_argument('--split_dest',
                         help='path to destination directory',
                         default='annotations/annotations',
@@ -57,13 +57,14 @@ if __name__ == '__main__':
     taco_categories_to_detectwaste(source=args.taco_source,
                                    dest=args.detectwaste_dest)
     # convert from epi to detectwaste
-    convert_dataset(args.detectwaste_dest, args.epi_source, args.epi_dest)
+
+    # convert_dataset(args.detectwaste_dest, args.epi_source, args.epi_dest)
 
     # split files into train and test files
     # if you want to concat more datasets simply
     # add path to datasets to the list below
     list_of_datasets = [args.detectwaste_dest,
-                        args.epi_dest,
+                        # args.epi_dest,
                         ]
 
     split_coco_dataset(list_of_datasets,
